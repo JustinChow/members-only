@@ -1,7 +1,21 @@
 const User = require('../models/user');
 const Message = require('../models/message');
+const async = require('async');
 
 const { body, validationResult } = require('express-validator/check');
+
+// Handle message display on GET
+exports.messages_display_get = function(req, res) {
+    // Get all messages
+    async.parallel({
+        messages: function(callback) {
+            Message.find().populate('author').exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        res.render('index', { title: 'Home', messages: results.messages });
+    });
+}
 
 // Handle message create form on GET
 exports.message_create_get = function(req, res) {

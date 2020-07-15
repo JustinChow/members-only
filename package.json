@@ -2,7 +2,7 @@
   "name": "members-only",
   "engines": {
     "node": "12.16.1"
-  }
+  },
   "version": "0.0.0",
   "private": true,
   "scripts": {

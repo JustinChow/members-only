@@ -1,22 +1,20 @@
 <%- include("./header") %> 
 
-<div class="col-sm-10"></div>
-    <h1><%= title %></h1>
-    <% if (locals.currentUser) { %>
-        <a href="/create-message">Create Message</a>
-    <% } %>
+<h1><%= title %></h1>
+<% if (locals.currentUser) { %>
+    <a href="/create-message">Create Message</a>
+<% } %>
 
-    <div class="card" id="messages-container">
-        <% for( let i = 0; i < messages.length; i++ ) { %>
-            <% let message = messages[i]; %>
-            <div class="card-body">
-                <p><%= message.title %></p>
-                <p>Author: <%= locals.currentUser ? message.author.fullName : '<REDACTED>' %></p>
-                <p><%= message.createdAtFormatted %></p>
-                <p><%= message.message %></p>
-            </div>
-        <% } %>
-    </div>
+<div class="card" id="messages-container">
+    <% for( let i = 0; i < messages.length; i++ ) { %>
+        <% let message = messages[i]; %>
+        <div class="card-body">
+            <p><%= message.title %></p>
+            <p>Author: <%= locals.currentUser ? message.author.fullName : '<REDACTED>' %></p>
+            <p><%= message.createdAtFormatted %></p>
+            <p><%= message.message %></p>
+        </div>
+    <% } %>
 </div>
 
 <%- include("./footer") %>

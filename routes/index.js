@@ -4,6 +4,7 @@ const router = express.Router();
 const user_controller = require('../controllers/userController');
 const join_club_controller = require('../controllers/joinClubController');
 const login_controller = require('../controllers/loginController');
+const message_controller = require('../controllers/messageController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -27,5 +28,9 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
+router.get('/create-message', message_controller.message_create_get);
+
+router.post('/create-message', message_controller.message_create_post);
 
 module.exports = router;

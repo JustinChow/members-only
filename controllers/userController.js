@@ -9,7 +9,7 @@ exports.user_create_get = function(req, res) {
         res.redirect('/');
     }
     else {
-        res.render('sign-up-form', { title: 'Sign-Up', user: req.user });
+        res.render('sign-up-form', { title: 'Sign-Up'});
     }
   };
 

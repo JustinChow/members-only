@@ -1,18 +1,17 @@
 <%- include("./header") %> 
 
 <h1><%= title %></h1>
-<% if (locals.currentUser) { %>
-    <a href="/create-message">Create Message</a>
-<% } %>
-
-<div class="card" id="messages-container">
+<div class="card" id="messages-container" style="border: none">
     <% for( let i = 0; i < messages.length; i++ ) { %>
         <% let message = messages[i]; %>
-        <div class="card-body">
-            <p><%= message.title %></p>
-            <p>Author: <%= locals.currentUser ? message.author.fullName : '<REDACTED>' %></p>
-            <p><%= message.createdAtFormatted %></p>
-            <p><%= message.message %></p>
+        <div class="card-body" style="border: 2px solid black; margin-top: 5px;">
+            <h5 class="card-title"><%= message.title %></h5>
+            <p class="card-subtitle mb-2 text-muted">
+                Author: <%= locals.currentUser && locals.currentUser.status == "Member" ? message.author.fullName : '<REDACTED>' %>
+            </p>
+            <p class="card-subtitle mb-2 text-muted">Posted: <%= message.createdAtFormatted %></p>
+            <hr>
+            <p class="card-text"><%= message.message %></p>
         </div>
     <% } %>
 </div>
